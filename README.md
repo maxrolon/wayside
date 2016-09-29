@@ -21,11 +21,12 @@ document.addEventListener('DOMContentLoaded', e => {
 
 ## Styles
 ```css
-/*An "is-fixed" class is added to the nav when the user scrolls past the top of the element*/
+/*An "is-fixed" class is added to the nav when the user scrolls past the top of the nav*/
 .is-fixed{
   position:fixed;
   top:0;
 }
+/*An "is-active" class is added to a nav item when the user scrolls past the #element it corresponds to*/
 .is-active{
   color:gold;
 }
