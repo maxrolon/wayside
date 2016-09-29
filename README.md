@@ -21,7 +21,7 @@ new Wayside(el)
 <nav class="js-wayside">
 	<a href="#Anchor1">Anchor 1</a>
 	<a href="#Anchor2">Anchor 2</a>
-	<a href="#Anchor2">Anchor 3</a>
+	<a href="#Anchor3">Anchor 3</a>
 	<a href="https://external.site">This is ignored</a>
 </nav>
 ```
