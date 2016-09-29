@@ -1,5 +1,8 @@
 ##Description
-Hijacks a nav menu with internally facing links. When a link is clicked, the window scrolls down to the element.
+This little library does a few things:
+- It hijacks a nav menu with internally facing links. When a link is clicked, the window scrolls down to the #element.
+- It updates the active state of a nav link to show when an #element is in viewport
+- It adds a class to the nav so that it can be fixed on scroll 
 
 ## Install 
 ```bash
