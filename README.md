@@ -1,5 +1,5 @@
 ##Description
-Activates a nav menu with internally facing links that, when clicked, scroll down to an anchored element.
+Hijacks a nav menu with internally facing links. When a link is clicked, the window scrolls down to the element.
 
 ## Install 
 ```bash
