@@ -1,6 +1,7 @@
-import src from './../src/index.js'
+import Wayside from './../src/index.js'
 
-//Interact with the interface of your module here. 
-//This file will get compiled into './index.js' and
-//Referenced in index.html
+document.addEventListener('DOMContentLoaded', e => {
+  const el = document.querySelector('.js-wayside')
+  new Wayside(el)
+})
 

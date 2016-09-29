@@ -10,27 +10,31 @@ npm i wayside --save
 ```javascript
 import Wayside from 'wayside'
 
-const el = document.querySelector('.js-wayside')
-
-new Wayside(el)
+document.addEventListener('DOMContentLoaded', e => {
+  const el = document.querySelector('.js-wayside')
+  new Wayside(el)
+})
 ```
 
 ## Styles
 ```css
 /*An "is-fixed" class is added to the nav when the user scrolls past the top of the element*/
-.anchored-nav.is-fixed{
-	position:fixed
+.is-fixed{
+  position:fixed
+  top:0;
 }
 ```
 
 ## Markup
 ```html
 
-<nav class="js-wayside anchored-nav">
-	<a href="#Anchor1">Anchor 1</a>
-	<a href="#Anchor2">Anchor 2</a>
-	<a href="#Anchor3">Anchor 3</a>
-	<a href="https://external.site">This is ignored</a>
+<nav class="js-wayside">
+  <div class="js-inner"><!-- This is the element that is fixed on scroll -->
+    <a href="#Anchor1">Anchor 1</a>
+    <a href="#Anchor2">Anchor 2</a>
+    <a href="#Anchor3">Anchor 3</a>
+    <a href="https://external.site">This is ignored</a>
+  </div>
 </nav>
 ```
 

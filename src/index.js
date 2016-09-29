@@ -1,4 +1,5 @@
 import scroll from 'raf-scroll.js'
+import Tweezer from 'tweezer.js'
 
 const fetchAnchors = el => {
   let anchors = [].slice.call( el.querySelectorAll('[href]') )
@@ -45,7 +46,12 @@ export default function(el) {
     waypoint.anchor.addEventListener('click', e => {
       e.preventDefault()
       e.returnValue = false
-      //scroll here *TODO
+      new Tweezer({
+        start: window.scrollY,
+        end: getOffset(waypoint.dest) 
+      })
+      .on('tick', v => window.scrollTo(0, v))
+      .begin()
     })
   })
   window.addEventListener('resize', getAllOffsets)
