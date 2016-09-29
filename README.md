@@ -1,56 +1,30 @@
 ##Description
-*Insert a short description explaining the purpose of the package*
+Activates a nav menu with internally facing links that, when clicked, scroll down to an anchored element.
 
 ## Install 
 ```bash
-npm i {{package-name}} --save
+npm i wayside --save
 ```
 
 ## Basic Usage
 ```javascript
-import {{identifier}} from '{{package-name}}'
+import Wayside from 'wayside'
 
-//Show examples of how a consumer can instantiate or interact with the package
-```
+const el = document.querySelector('.js-wayside')
 
-## Configuration
-```javascript
-
-//Explain how the package can be configured.
-//If the package follows a constructor pattern, what arguments does it accept?
-//Are there any default values to the arguments that need explaining?
-```
-
-## API: Methods
-```javascript
-
-//What methods can a consumer call to interact with the package?
-```
-
-## API: Properties
-```javascript
-
-//What properties can a consumer access to ascertain the state of the package?
-```
-
-## Styling
-```css
-
-.package-name{
-	/* Are there any styles needed to support the package? */
-}
+new Wayside(el)
 ```
 
 ## Markup
 ```html
 
-<div class="js-package-name">
-	<!-- Does the package require any markup to be hard-coded into the DOM? -->
-</div>
+<nav class="js-wayside">
+	<a href="#Anchor1">Anchor 1</a>
+	<a href="#Anchor2">Anchor 2</a>
+	<a href="#Anchor2">Anchor 3</a>
+	<a href="https://external.site">This is ignored</a>
+</nav>
 ```
 
-## Contributing
-*How can a developer add contributions to the package?*
-
-
 ## License 
+MIT
