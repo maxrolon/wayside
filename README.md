@@ -23,8 +23,11 @@ document.addEventListener('DOMContentLoaded', e => {
 ```css
 /*An "is-fixed" class is added to the nav when the user scrolls past the top of the element*/
 .is-fixed{
-  position:fixed
+  position:fixed;
   top:0;
+}
+.is-active{
+  color:gold;
 }
 ```
 
