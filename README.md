@@ -1,4 +1,4 @@
-##Description
+## Description
 This little library does a few things:
 - It hijacks a nav menu with internally facing links. When a link is clicked, the window scrolls down to the #element.
 - It updates the active state of a nav link to show when an #element is in viewport
@@ -21,12 +21,12 @@ document.addEventListener('DOMContentLoaded', e => {
 
 ## Styles
 ```css
-/*An "is-fixed" class is added to the nav when the user scrolls past the top of the nav*/
+/* An "is-fixed" class is added to the nav when the user scrolls past the top of the nav */
 .is-fixed{
   position:fixed;
   top:0;
 }
-/*An "is-active" class is added to a nav item when the user scrolls past the #element it corresponds to*/
+/* An "is-active" class is added to a nav item when the user scrolls past the #element it corresponds to */
 .is-active{
   color:gold;
 }
