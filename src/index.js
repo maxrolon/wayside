@@ -8,7 +8,7 @@ const fetchAnchors = el => {
 const restrictToHash = el => /#/.test( el.anchor = el.getAttribute('href') )
 const fetchDestinations = el => (
   {
-    anchor: el, 
+    anchor: el,
     dest: document.getElementById( /.*#(.*)/.exec(el.anchor).pop() )
   }
 )
@@ -23,24 +23,43 @@ const getOffset = (el, win=window, docElem=document.documentElement, box=false) 
   box.top + (win.pageYOffset || docElem.scrollTop) - (docElem.clientTop || 0)
 )
 const cacheOffsets = el => el.offsetY = getOffset(el)
+const addActiveClass = el => (
+  el.parentNode.hasAttribute('wayside-link')
+    ? el.parentNode.classList.add('is-active')
+    : el.classList.add('is-active'),
+  el
+)
+const removeActiveClass = el => (
+  el.parentNode.hasAttribute('wayside-link')
+    ? el.parentNode.classList.remove('is-active')
+    : el.classList.remove('is-active'),
+  el
+)
 
-export default function(el) {
+export default function(el, {
+  afterChange = function () {}
+} = {}) {
   const waypoints = fetchAnchors(el)
   const sticky = el.querySelector('.js-inner')
   let offset;
   let getAllOffsets;
+  let lastActive;
   (getAllOffsets = function(){
     waypoints.map(el => el.dest).forEach(cacheOffsets)
     offset = getOffset(el)
   })();
   scroll( (scrollTop) => {
-    if ( scrollTop >= offset) {
-      sticky.classList.add('is-fixed')
-    } else {
-      sticky.classList.remove('is-fixed')
+    sticky.classList[scrollTop >= offset ? 'add' : 'remove']('is-fixed')
+    const closest = waypoints.reduce( reduceToClosest(scrollTop) ).anchor
+    if (lastActive === closest) {
+      return
     }
-    waypoints.forEach( el => el.anchor.classList.remove('is-active'))
-    waypoints.reduce( reduceToClosest(scrollTop) ).anchor.classList.add('is-active')
+    waypoints.forEach( el => removeActiveClass(el.anchor) )
+    addActiveClass(
+      waypoints.reduce( reduceToClosest(scrollTop) ).anchor
+    )
+    afterChange(closest, lastActive)
+    lastActive = closest
   })
   waypoints.forEach( waypoint=> {
     waypoint.anchor.addEventListener('click', e => {
@@ -48,7 +67,7 @@ export default function(el) {
       e.returnValue = false
       new Tweezer({
         start: window.scrollY,
-        end: getOffset(waypoint.dest) 
+        end: getOffset(waypoint.dest)
       })
       .on('tick', v => window.scrollTo(0, v))
       .begin()
