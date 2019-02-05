@@ -1,6 +1,6 @@
 {
   "name": "wayside",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Activates a nav menu with internally facing links that, when clicked, scroll down to an anchored element.",
   "author": "maxrolon",
   "main": "./src/index.js",
