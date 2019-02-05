@@ -37,7 +37,8 @@ const removeActiveClass = el => (
 )
 
 export default function(el, {
-  afterChange = function () {}
+  afterChange = function () {},
+  getOffsetTop = function () {}
 } = {}) {
   const waypoints = fetchAnchors(el)
   const sticky = el.querySelector('.js-inner')
@@ -67,7 +68,7 @@ export default function(el, {
       e.returnValue = false
       new Tweezer({
         start: window.scrollY,
-        end: getOffset(waypoint.dest)
+        end: (getOffsetTop() || 0) + getOffset(waypoint.dest)
       })
       .on('tick', v => window.scrollTo(0, v))
       .begin()
